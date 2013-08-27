@@ -11,10 +11,6 @@
 # 
 # Paginate
 # ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
-#
-# TODO:
-# 
-# Implement NoMethodError for columns and Arel predications
 module ArelSearch
   class Base
     attr_reader :fields, :model, :params

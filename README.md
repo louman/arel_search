@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+params = {'orders.status.eq' => 50}
+ArelSearch::Base.new(Order, params).search_all
+
+Query by association
+params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
+
+Paginate
+ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
+
+## TODO
+
+Work with namespace
 
 ## Contributing
 
