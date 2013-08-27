@@ -21,14 +21,14 @@ Or install it yourself as:
 ### Basic
 
     params = {'orders.status.eq' => 50}
-    ArelSearch::Base.new(Order, params).search_all
+    ArelSearch::Base.new(Order, params).search
 
 ### Query by association
 
     params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
-    ArelSearch::Base.new(Order, params).search_all
+    ArelSearch::Base.new(Order, params).search
 
-### Paginate
+### Paginate (3rd party)
 
     params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
     ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
