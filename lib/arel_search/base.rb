@@ -3,14 +3,14 @@
 # Basic usage:
 #
 # params = {'orders.status.eq' => 50}
-# ArelSearch::Base.new(Order, params).search_all
+# ArelSearch::Base.new(Order, params).search
 #
 #
 # Query by association
 # params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
 # 
-# Paginate
-# ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
+# Paginate (3rd party)
+# ArelSearch::Base.new(Order, params).search.paginate(page: 1, per_page: 10)
 module ArelSearch
   class Base
     attr_reader :fields, :model, :params
@@ -22,13 +22,9 @@ module ArelSearch
       @params = params
     end
 
-    def search_all
+    def search
       scope_conditions
       self.scope
-    end
-
-    def search(page=1, per_page=20)
-      self.search_all.paginate(per_page: per_page, page: page)
     end
 
     private
