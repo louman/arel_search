@@ -20,21 +20,18 @@ Or install it yourself as:
 
 ### Basic
 
-params = {'orders.status.eq' => 50}
-
-ArelSearch::Base.new(Order, params).search_all
+    params = {'orders.status.eq' => 50}
+    ArelSearch::Base.new(Order, params).search_all
 
 ### Query by association
 
-params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
-
-ArelSearch::Base.new(Order, params).search_all
+    params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
+    ArelSearch::Base.new(Order, params).search_all
 
 ### Paginate
 
-params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
-
-ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
+    params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
+    ArelSearch::Base.new(Order, params).search(page: 1, per_page: 10)
 
 ## TODO
 
