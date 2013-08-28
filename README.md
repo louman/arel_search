@@ -35,7 +35,8 @@ Or install it yourself as:
 
 ## TODO
 
-Work with namespace
+* Work with namespace
+* Allow 'OR' conditions
 
 ## Contributing
 
