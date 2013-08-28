@@ -1,6 +1,6 @@
 # ArelSearch
 
-TODO: Write a gem description
+Work in progress, use at your own risk but feel free to contribute :)
 
 ## Installation
 

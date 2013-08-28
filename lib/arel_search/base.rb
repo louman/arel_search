@@ -44,15 +44,18 @@ module ArelSearch
     end
 
     class SearchField
-      attr_reader :name, :value, :association, :arel_predication, :split, :base_model
+
+      NAMESPACE_SYMBOL = '::'
+
+      attr_reader :name, :value, :association, :namespace, :arel_predication, :split, :base_model
 
       def initialize(key, v, b_model)
-        @base_model       = b_model
+        @base_model              = b_model
         split_key(key)
-        @association          = self.split[0]
-        self.name             = self.split[1]
-        self.arel_predication = self.split[2]
-        @value                = v
+        @association, @namespace = set_association_and_namespace(self.split[0])
+        self.name                = self.split[1]
+        self.arel_predication    = self.split[2]
+        @value                   = v
       end
 
       def scopify(scope, default_arel_table)
@@ -77,7 +80,7 @@ module ArelSearch
       end
 
       def model
-        self.association.camelize.singularize.constantize
+        "#{namespace}#{NAMESPACE_SYMBOL}#{association.camelize.singularize}".constantize
       end
 
       private
@@ -107,6 +110,18 @@ module ArelSearch
 
       def set_arel_predications
         @@arel_predications ||= Arel::Predications.instance_methods.map(&:to_s)
+      end
+
+      def set_association_and_namespace(association_namespaced)
+        split = association_namespaced.split(NAMESPACE_SYMBOL)
+        if split.size > 1
+          namespace   = split[0]
+          association = split[1]
+        else
+          namespace   = ''
+          association = association_namespaced
+        end
+        return association, namespace
       end
 
     end
