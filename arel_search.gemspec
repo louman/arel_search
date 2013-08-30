@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'arel_search/version'
 
 Gem::Specification.new do |gem|
+  gem.license       = 'MIT'
   gem.name          = "arel_search"
   gem.version       = ArelSearch::VERSION
   gem.authors       = ["Marcus Vinicius Loureiro Mansur"]
