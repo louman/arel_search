@@ -16,7 +16,7 @@ module ArelSearch
     attr_reader :fields, :model, :params
     attr_accessor :scope
 
-    def initialize(m, params)
+    def initialize(m, params={})
       @model  = m
       @scope  = self.model
       @params = params
