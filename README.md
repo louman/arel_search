@@ -27,6 +27,14 @@ Or install it yourself as:
 
     params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
     ArelSearch::Base.new(Order, params).search
+    
+### Nested associations
+
+ArelSearch doens't support nested associations yet but since a scope is returned, you can always append more conditions and associations.
+    
+    params = {'orders.status.eq' => 50, 'customer.name.matches' => 'Marcus'}
+    scope = ArelSearch::Base.new(Order, params).search
+    scope.joins(:order_items).where("order_items.sku = ?", '123')
 
 ### Paginate (3rd party)
 
